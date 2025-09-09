@@ -325,7 +325,7 @@ async def img2img(
         # Start background task
         loop = asyncio.get_event_loop()
         loop.run_in_executor(executor, lambda: asyncio.run(
-            gen_img2img(job_id, base_img, pose_img, request)
+            gen_img2img(job_id, base_img, pose_img,mask_img, request)
         ))
         
         return {"job_id": job_id, "status": "pending"}
