@@ -122,13 +122,13 @@ def generate(prompt, fixed_seed, guidance, steps, sampler_name, scheduler, weigh
 
   print("Prompt Received")
 
-  image = LoadImage.load_image(face_img)[0]
+  image = LoadImage.load_image(pose_image)[0]
   latent_image = ImageScaleToTotalPixels.upscale(image, "lanczos", 1.0)[0]
   latent_image = VAEEncode.encode(vae, latent_image)[0]
 
   cond = CLIPTextEncodeFlux.encode(clip_f, prompt, prompt, guidance)[0]
 
-  pulid_image = LoadImage.load_image(pose_image)[0]
+  pulid_image = LoadImage.load_image(face_img)[0]
 
   mask_np = np.array(mask_img).astype(np.uint8)
   mask_image = img_np_to_tensor(mask_np)
