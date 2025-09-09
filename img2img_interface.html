@@ -313,10 +313,6 @@
                 return;
             }
 
-            if (!prompt.trim()) {
-                alert('Please enter a prompt');
-                return;
-            }
             
             const formData = new FormData();
             formData.append('base_image', baseImageFile);
@@ -474,11 +470,6 @@
             // Check API health on load
             fetch(`/health`)
                 .then(response => response.json())
-                .then(data => {
-                    if (!data.pipelines_loaded) {
-                        alert('Warning: AI models are still loading. Please wait a moment before generating images.');
-                    }
-                })
                 .catch(error => {
                     alert('Cannot connect to API server. Please make sure the backend is running on http://localhost:8888');
                 });
